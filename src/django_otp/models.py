@@ -191,7 +191,7 @@ class BaseDevice(models.Model):
 
 
 if hasattr(settings, 'OTP_DEVICE_MODEL'):
-    Device = apps.get_model(settings.OTP_DEVICE_MODEL)
+    Device = apps.get_model(settings.OTP_DEVICE_MODEL, require_ready=False)
 else:
     Device = BaseDevice
 
