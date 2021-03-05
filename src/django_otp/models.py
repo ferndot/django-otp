@@ -34,7 +34,7 @@ class DeviceManager(models.Manager):
         return devices
 
 
-class Device(models.Model):
+class BaseDevice(models.Model):
     """
     Abstract base model for a :term:`device` attached to a user. Plugins must
     subclass this to define their OTP models.
@@ -343,3 +343,6 @@ class ThrottlingMixin(models.Model):
 
     class Meta:
         abstract = True
+
+
+Device = settings.OTP_DEVICE_MODEL or BaseDevice
