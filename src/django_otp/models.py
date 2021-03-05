@@ -190,7 +190,10 @@ class BaseDevice(models.Model):
         return False
 
 
-Device = settings.OTP_DEVICE_MODEL or BaseDevice
+if hasattr(settings, 'OTP_DEVICE_MODEL'):
+    Device = apps.get_model(settings.OTP_DEVICE_MODEL)
+else:
+    Device = BaseDevice
 
 
 class SideChannelDevice(Device):
