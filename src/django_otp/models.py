@@ -190,6 +190,9 @@ class BaseDevice(models.Model):
         return False
 
 
+Device = settings.OTP_DEVICE_MODEL or BaseDevice
+
+
 class SideChannelDevice(Device):
     """
     Abstract base model for a side-channel :term:`device` attached to a user.
@@ -343,6 +346,3 @@ class ThrottlingMixin(models.Model):
 
     class Meta:
         abstract = True
-
-
-Device = settings.OTP_DEVICE_MODEL or BaseDevice
